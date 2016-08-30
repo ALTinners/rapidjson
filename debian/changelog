@@ -1,9 +1,27 @@
-rapidjson (0.12~git20141031+dfsg-1) unstable; urgency=medium
+rapidjson (1.1.0-1) experimental; urgency=medium
 
-  * remove bin/jsonchecker/* (closes: #840333) and disable the unit test
-    using it
+  * New upstream release
 
- -- Rene Engelhard <rene@debian.org>  Wed, 30 Nov 2016 21:10:15 +0100
+  * add debian/watch
+
+ -- Rene Engelhard <rene@debian.org>  Tue, 30 Aug 2016 22:54:00 +0200
+
+rapidjson (1.0.2-2) experimental; urgency=medium
+
+  * add missing python to Build-Depends 
+
+  * run the $(MAKE)s in build and run manual $(MAKE) install - no idea
+    why it worked here locally...
+
+ -- Rene Engelhard <rene@debian.org>  Thu, 24 Sep 2015 21:54:16 +0000
+
+rapidjson (1.0.2-1) experimental; urgency=medium
+
+  * New upstream release (closes: #799899)
+
+  * remove jquery.js link in rapidjson-doc. 
+
+ -- Rene Engelhard <rene@debian.org>  Thu, 24 Sep 2015 17:48:39 +0200
 
 rapidjson (0.12~git20141031-3) unstable; urgency=medium
 
