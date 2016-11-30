@@ -2,6 +2,7 @@
 // This example shows writing JSON string with writer directly.
 
 #include "rapidjson/prettywriter.h" // for stringify JSON
+#include "rapidjson/filestream.h"   // wrapper of C stream for prettywriter as output
 #include <cstdio>
 #include <string>
 #include <vector>
@@ -18,11 +19,8 @@ protected:
     void Serialize(Writer& writer) const {
         // This base class just write out name-value pairs, without wrapping within an object.
         writer.String("name");
-#ifdef RAPIDJSON_HAS_STDSTRING
-        writer.String(name_);
-#else
-        writer.String(name_.c_str(), (SizeType)name_.length()); // Supplying length of string is faster.
-#endif
+        writer.String(name_.c_str(), (SizeType)name_.length()); // Suppling length of string is faster.
+
         writer.String("age");
         writer.Uint(age_);
     }
@@ -44,11 +42,7 @@ public:
         writer.StartObject();
         
         writer.String("school");
-#ifdef RAPIDJSON_HAS_STDSTRING
-        writer.String(school_);
-#else
         writer.String(school_.c_str(), (SizeType)school_.length());
-#endif
 
         writer.String("GPA");
         writer.Double(GPA_);
@@ -143,15 +137,13 @@ int main(int, char*[]) {
 
     employees.push_back(Employee("Percy TSE", 30, false));
 
-    StringBuffer sb;
-    PrettyWriter<StringBuffer> writer(sb);
+    FileStream s(stdout);
+    PrettyWriter<FileStream> writer(s);     // Can also use Writer for condensed formatting
 
     writer.StartArray();
     for (std::vector<Employee>::const_iterator employeeItr = employees.begin(); employeeItr != employees.end(); ++employeeItr)
         employeeItr->Serialize(writer);
     writer.EndArray();
-
-    puts(sb.GetString());
 
     return 0;
 }
