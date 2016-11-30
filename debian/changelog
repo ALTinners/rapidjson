@@ -1,3 +1,11 @@
+rapidjson (1.1.0+dfsg-1) experimental; urgency=medium
+
+  * remove bin/jsonchecker/* (closes: #840333) and disable the unit test
+    using it
+  * don't bogusly install usr/lib/libgtest*.a
+
+ -- Rene Engelhard <rene@debian.org>  Wed, 30 Nov 2016 22:42:45 +0100
+
 rapidjson (1.1.0-1) experimental; urgency=medium
 
   * New upstream release

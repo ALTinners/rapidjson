@@ -1,1 +1,2 @@
 disable-valgrind_unittest.diff
+no-jsoncheckertest.diff
