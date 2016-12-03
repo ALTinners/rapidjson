@@ -1,3 +1,10 @@
+rapidjson (1.1.0+dfsg-2) experimental; urgency=medium
+
+  * make .install even more strict to not install bogus /usr/include/gtest
+    (closes: #846568)
+
+ -- Rene Engelhard <rene@debian.org>  Sat, 03 Dec 2016 01:05:45 +0100
+
 rapidjson (1.1.0+dfsg-1) experimental; urgency=medium
 
   * remove bin/jsonchecker/* (closes: #840333) and disable the unit test
