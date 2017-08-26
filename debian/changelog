@@ -1,3 +1,9 @@
+rapidjson (1.1.0+dfsg-3) experimental; urgency=medium
+
+  * add upstream patches to fix build with gcc 7 (closes: #873231)
+
+ -- Rene Engelhard <rene@debian.org>  Sat, 26 Aug 2017 16:49:27 +0000
+
 rapidjson (1.1.0+dfsg-2) experimental; urgency=medium
 
   * make .install even more strict to not install bogus /usr/include/gtest
