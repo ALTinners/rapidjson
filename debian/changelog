@@ -1,3 +1,9 @@
+rapidjson (1.1.0+dfsg2-1) experimental; urgency=medium
+
+  * (really) remove bin/jsonchecker/* (again) (closes: #884078)
+
+ -- Rene Engelhard <rene@debian.org>  Mon, 08 Jan 2018 08:47:38 +0100
+
 rapidjson (1.1.0+dfsg-3) experimental; urgency=medium
 
   * add upstream patches to fix build with gcc 7 (closes: #873231)
