@@ -2,21 +2,10 @@
 !/bin/data
 !/bin/encodings
 !/bin/jsonchecker
-/build
+/build/*.exe
+/build/gmake
+/build/vs*/
 /doc/html
 /doc/doxygen_*.db
-*.a
-
-# Temporary files created during CMake build
-CMakeCache.txt
-CMakeFiles
-cmake_install.cmake
-CTestTestfile.cmake
-Makefile
-RapidJSON*.cmake
-RapidJSON.pc
-Testing
-/googletest
-install_manifest.txt
-Doxyfile
-DartConfiguration.tcl
+/thirdparty/lib
+/intermediate

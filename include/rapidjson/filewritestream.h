@@ -1,16 +1,22 @@
-// Tencent is pleased to support the open source community by making RapidJSON available.
-// 
-// Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved.
+// Copyright (C) 2011 Milo Yip
 //
-// Licensed under the MIT License (the "License"); you may not use this file except
-// in compliance with the License. You may obtain a copy of the License at
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-// http://opensource.org/licenses/MIT
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
 //
-// Unless required by applicable law or agreed to in writing, software distributed 
-// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
-// CONDITIONS OF ANY KIND, either express or implied. See the License for the 
-// specific language governing permissions and limitations under the License.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 #ifndef RAPIDJSON_FILEWRITESTREAM_H_
 #define RAPIDJSON_FILEWRITESTREAM_H_
@@ -18,7 +24,7 @@
 #include "rapidjson.h"
 #include <cstdio>
 
-RAPIDJSON_NAMESPACE_BEGIN
+namespace rapidjson {
 
 //! Wrapper of C file stream for input using fread().
 /*!
@@ -28,7 +34,7 @@ class FileWriteStream {
 public:
     typedef char Ch;    //!< Character type. Only support char.
 
-    FileWriteStream(std::FILE* fp, char* buffer, size_t bufferSize) : fp_(fp), buffer_(buffer), bufferEnd_(buffer + bufferSize), current_(buffer_) { 
+    FileWriteStream(FILE* fp, char* buffer, size_t bufferSize) : fp_(fp), buffer_(buffer), bufferEnd_(buffer + bufferSize), current_(buffer_) { 
         RAPIDJSON_ASSERT(fp_ != 0);
     }
 
@@ -74,7 +80,7 @@ private:
     FileWriteStream(const FileWriteStream&);
     FileWriteStream& operator=(const FileWriteStream&);
 
-    std::FILE* fp_;
+    FILE* fp_;
     char *buffer_;
     char *bufferEnd_;
     char *current_;
@@ -86,6 +92,6 @@ inline void PutN(FileWriteStream& stream, char c, size_t n) {
     stream.PutN(c, n);
 }
 
-RAPIDJSON_NAMESPACE_END
+} // namespace rapidjson
 
 #endif // RAPIDJSON_FILESTREAM_H_

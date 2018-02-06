@@ -1,16 +1,22 @@
-// Tencent is pleased to support the open source community by making RapidJSON available.
-// 
-// Copyright (C) 2015 THL A29 Limited, a Tencent company, and Milo Yip. All rights reserved.
+// Copyright (C) 2011 Milo Yip
 //
-// Licensed under the MIT License (the "License"); you may not use this file except
-// in compliance with the License. You may obtain a copy of the License at
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-// http://opensource.org/licenses/MIT
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
 //
-// Unless required by applicable law or agreed to in writing, software distributed 
-// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
-// CONDITIONS OF ANY KIND, either express or implied. See the License for the 
-// specific language governing permissions and limitations under the License.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 #include "unittest.h"
 #include "rapidjson/filereadstream.h"
@@ -41,21 +47,14 @@ private:
     
 protected:
     static FILE* Open(const char* filename) {
-        const char *paths[] = {
-            "encodings/%s",
-            "bin/encodings/%s",
-            "../bin/encodings/%s",
-            "../../bin/encodings/%s",
-            "../../../bin/encodings/%s"
-        };
         char buffer[1024];
-        for (size_t i = 0; i < sizeof(paths) / sizeof(paths[0]); i++) {
-            sprintf(buffer, paths[i], filename);
-            FILE *fp = fopen(buffer, "rb");
-            if (fp)
-                return fp;
+        sprintf(buffer, "encodings/%s", filename);
+        FILE *fp = fopen(buffer, "rb");
+        if (!fp) {
+            sprintf(buffer, "../../bin/encodings/%s", filename);
+            fp = fopen(buffer, "rb");
         }
-        return 0;
+        return fp;
     }
 
     static char *ReadFile(const char* filename, bool appendPath, size_t* outLength) {
@@ -113,11 +112,10 @@ protected:
             }
             EXPECT_EQ('\0', s.Peek());
             free(data);
-            EXPECT_EQ(size, eis.Tell());
         }
     }
 
-    void TestAutoUTFInputStream(const char *filename, bool expectHasBOM) {
+    void TestAutoUTFInputStream(const char *filename) {
         // Test FileReadStream
         {
             char buffer[16];
@@ -125,7 +123,6 @@ protected:
             ASSERT_TRUE(fp != 0);
             FileReadStream fs(fp, buffer, sizeof(buffer));
             AutoUTFInputStream<unsigned, FileReadStream> eis(fs);
-            EXPECT_EQ(expectHasBOM, eis.HasBOM());
             StringStream s(json_);
             while (eis.Peek() != '\0') {
                 unsigned expected, actual;
@@ -143,7 +140,6 @@ protected:
             char* data = ReadFile(filename, true, &size);
             MemoryStream ms(data, size);
             AutoUTFInputStream<unsigned, MemoryStream> eis(ms);
-            EXPECT_EQ(expectHasBOM, eis.HasBOM());
             StringStream s(json_);
 
             while (eis.Peek() != '\0') {
@@ -154,7 +150,6 @@ protected:
             }
             EXPECT_EQ('\0', s.Peek());
             free(data);
-            EXPECT_EQ(size, eis.Tell());
         }
     }
 
@@ -262,25 +257,16 @@ TEST_F(EncodedStreamTest, EncodedInputStream) {
 }
 
 TEST_F(EncodedStreamTest, AutoUTFInputStream) {
-    TestAutoUTFInputStream("utf8.json",      false);
-    TestAutoUTFInputStream("utf8bom.json",   true);
-    TestAutoUTFInputStream("utf16le.json",   false);
-    TestAutoUTFInputStream("utf16lebom.json",true);
-    TestAutoUTFInputStream("utf16be.json",   false);
-    TestAutoUTFInputStream("utf16bebom.json",true);
-    TestAutoUTFInputStream("utf32le.json",   false);
-    TestAutoUTFInputStream("utf32lebom.json",true);
-    TestAutoUTFInputStream("utf32be.json",   false);
-    TestAutoUTFInputStream("utf32bebom.json", true);
-
-    {
-        // Auto detection fail, use user defined UTF type
-        const char json[] = "{ }";
-        MemoryStream ms(json, sizeof(json));
-        AutoUTFInputStream<unsigned, MemoryStream> eis(ms, kUTF8);
-        EXPECT_FALSE(eis.HasBOM());
-        EXPECT_EQ(kUTF8, eis.GetType());
-    }
+    TestAutoUTFInputStream("utf8.json");
+    TestAutoUTFInputStream("utf8bom.json");
+    TestAutoUTFInputStream("utf16le.json");
+    TestAutoUTFInputStream("utf16lebom.json");
+    TestAutoUTFInputStream("utf16be.json");
+    TestAutoUTFInputStream("utf16bebom.json");
+    TestAutoUTFInputStream("utf32le.json");
+    TestAutoUTFInputStream("utf32lebom.json");
+    TestAutoUTFInputStream("utf32be.json");
+    TestAutoUTFInputStream("utf32bebom.json");
 }
 
 TEST_F(EncodedStreamTest, EncodedOutputStream) {
