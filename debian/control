@@ -1,7 +1,7 @@
 Source: rapidjson
 Priority: optional
 Maintainer: Debian QA Group <packages@qa.debian.org>
-Build-Depends: debhelper (>= 9), cmake, doxygen, libgtest-dev, python
+Build-Depends: debhelper (>= 10), cmake, doxygen, libgtest-dev, python
 Standards-Version: 3.9.6
 Section: libs
 Homepage: https://miloyip.github.io/rapidjson
