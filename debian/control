@@ -11,6 +11,7 @@ Vcs-Browser: https://salsa.debian.org/debian/rapidjson
 Package: rapidjson-dev
 Section: libdevel
 Architecture: all
+Multi-Arch: foreign
 Depends: ${misc:Depends}
 Description: fast JSON parser/generator for C++ with SAX/DOM style API
  RapidJSON is an attempt to create the fastest JSON parser and generator.
@@ -35,6 +36,7 @@ Description: fast JSON parser/generator for C++ with SAX/DOM style API
 Package: rapidjson-doc
 Section: doc
 Architecture: all
+Multi-Arch: foreign
 Depends: ${misc:Depends}
 Description: fast JSON parser/generator for C++ (API documentation)
  This package contains the documentation for RapidJSON, a fast JSON
