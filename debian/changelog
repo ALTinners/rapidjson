@@ -1,3 +1,9 @@
+rapidjson (1.1.0+dfsg2-3~bpo9+1) stretch-backports; urgency=medium
+
+  * Rebuild for stretch-backports.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Sun, 08 Apr 2018 15:22:38 +0300
+
 rapidjson (1.1.0+dfsg2-3) unstable; urgency=medium
 
   * Remove outdated debian/source/include-binaries.
