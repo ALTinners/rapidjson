@@ -1,3 +1,9 @@
+rapidjson (1.1.0+dfsg2-4) unstable; urgency=medium
+
+  * Add patches to deal with gcc 8.0 errors. Fixes FTBFS (Closes: #906406)
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Wed, 12 Sep 2018 02:55:49 +0300
+
 rapidjson (1.1.0+dfsg2-3) unstable; urgency=medium
 
   * Remove outdated debian/source/include-binaries.
