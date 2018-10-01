@@ -1,3 +1,9 @@
+rapidjson (1.1.0+dfsg2-5) UNRELEASED; urgency=medium
+
+  * d/copyright: Use https protocol in Format field
+
+ -- Ondřej Nový <onovy@debian.org>  Mon, 01 Oct 2018 10:36:47 +0200
+
 rapidjson (1.1.0+dfsg2-4) unstable; urgency=medium
 
   * Add patches to deal with gcc 8.0 errors. Fixes FTBFS (Closes: #906406)
