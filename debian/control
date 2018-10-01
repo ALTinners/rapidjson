@@ -31,7 +31,7 @@ Description: fast JSON parser/generator for C++ with SAX/DOM style API
   - Parse number to int/unsigned/int64_t/uint64_t/double depending on input
   - Support custom memory allocation. Also, the default memory pool allocator
     can also be supplied with a user buffer (such as a buffer allocated on
-    user's heap or programme stack) to minimize allocation. 
+    user's heap or programme stack) to minimize allocation.
 
 Package: rapidjson-doc
 Section: doc
