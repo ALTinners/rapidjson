@@ -1,6 +1,7 @@
 rapidjson (1.1.0+dfsg2-5) UNRELEASED; urgency=medium
 
   * d/copyright: Use https protocol in Format field
+  * d/changelog: Remove trailing whitespaces
 
  -- Ondřej Nový <onovy@debian.org>  Mon, 01 Oct 2018 10:36:47 +0200
 
@@ -70,7 +71,7 @@ rapidjson (1.1.0-1) experimental; urgency=medium
 
 rapidjson (1.0.2-2) experimental; urgency=medium
 
-  * add missing python to Build-Depends 
+  * add missing python to Build-Depends
 
   * run the $(MAKE)s in build and run manual $(MAKE) install - no idea
     why it worked here locally...
@@ -81,7 +82,7 @@ rapidjson (1.0.2-1) experimental; urgency=medium
 
   * New upstream release (closes: #799899)
 
-  * remove jquery.js link in rapidjson-doc. 
+  * remove jquery.js link in rapidjson-doc.
 
  -- Rene Engelhard <rene@debian.org>  Thu, 24 Sep 2015 17:48:39 +0200
 
@@ -108,7 +109,7 @@ rapidjson (0.12~git20141031-1) unstable; urgency=low
   * update debian/copyight and debian/control
   * remove unndeeded libjson and libyajl from Build-Depends
   * add libgtest-dev as build dependency and add `use-system-gtest.diff' patch
-    to point to system-wide Google test sources 
+    to point to system-wide Google test sources
   * drop SSE4.2 hack
   * run tests on all platforms
 
