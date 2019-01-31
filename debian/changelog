@@ -1,11 +1,15 @@
-rapidjson (1.1.0+dfsg2-5) UNRELEASED; urgency=medium
+rapidjson (1.1.0+dfsg2-5) unstable; urgency=medium
 
+  [ Ondřej Nový ]
   * d/copyright: Use https protocol in Format field
   * d/changelog: Remove trailing whitespaces
   * d/control: Remove trailing whitespaces
   * d/rules: Remove trailing whitespaces
 
- -- Ondřej Nový <onovy@debian.org>  Mon, 01 Oct 2018 10:36:47 +0200
+  [ Alexander GQ Gerasiov ]
+  * d/watch: Fix dversionmangle.
+
+ -- Alexander GQ Gerasiov <gq@debian.org>  Thu, 31 Jan 2019 23:23:56 +0300
 
 rapidjson (1.1.0+dfsg2-4) unstable; urgency=medium
 
